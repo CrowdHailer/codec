@@ -1,17 +1,17 @@
 // IMPORTS ---------------------------------------------------------------------
 
+import gleam/dict.{type Dict}
 import gleam/dynamic.{
   type DecodeError as DynamicError, type Dynamic, DecodeError as DynamicError,
 }
 import gleam/function
+import gleam/int
 import gleam/json.{type DecodeError as JsonError, type Json}
 import gleam/list
-import gleam/dict.{type Dict}
 import gleam/option.{type Option}
 import gleam/pair
 import gleam/result
-import gleam/string_builder.{type StringBuilder}
-import gleam/int
+import gleam/string_tree.{type StringTree}
 
 // TYPES -----------------------------------------------------------------------
 
@@ -567,7 +567,7 @@ pub fn encode_string(value: a, codec: Codec(a)) -> String {
 
 ///
 ///
-pub fn encode_string_custom_from(value: a, codec: Codec(a)) -> StringBuilder {
+pub fn encode_string_custom_from(value: a, codec: Codec(a)) -> StringTree {
   codec.encode(value)
   |> json.to_string_builder
 }
